@@ -1,6 +1,12 @@
 # Newsreader
 
-RSS/Atom Feed Reader für die Code Competition auf IT-Talents.de
+RSS/Atom Feed Reader für die Code Competition auf IT-Talents.de.
+
+[DEMO](https://kamshak.github.io/newsreader/)
+
+## Genutze Technologien
+
+Für diese Web-App wurden die Frameworks Angular2 und Bootstrap 4 genutzt. Die App läuft rein Clientseitig und benötigt nur einen einfachen Webserver.
 
 ## Voraussetzungen
 
@@ -10,6 +16,7 @@ Für die Entwicklung/Kompilierung wird benötigt:
 - Sonstige Abhängigkeiten: Installation durch ```npm install```
 
 ## Entwicklung
+
 Führe `ng serve` aus, um einen Entwicklungsserver zu starten. Die App steht dann unter `http://localhost:4200/` bereit.
 
 ## Kompilierung
