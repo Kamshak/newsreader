@@ -30,10 +30,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   onScroll() {
     if (this.displayArticles.length < this.articles.length) {
       this.articles.slice(this.displayArticles.length + 1, this.displayArticles.length + 20).forEach((item: FP.Article) => {
-        if (_.findIndex(this.displayArticles, (x: FP.Article) => x.guid !== item.guid)) {
+        if (_.findIndex(this.displayArticles, (x: FP.Article) => x.guid === item.guid) === -1) {
           this.displayArticles.push(item);
         }
       });
+
     }
   }
 
