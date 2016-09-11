@@ -1,3 +1,11 @@
-<h1>
-  {{title}}
-</h1>
+<navbar [items]="navigationItems">
+	<div navbar-pre-items>
+		<a class="navbar-brand" uiSref="app">News Reader</a>
+	</div>
+	<div navbar-post-items>
+	</div>
+</navbar>
+
+<div class="row">
+	<ui-view class="col-md-12"></ui-view>
+</div>

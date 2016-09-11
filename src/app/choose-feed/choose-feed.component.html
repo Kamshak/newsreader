@@ -1,0 +1,53 @@
+<h1>Feed Auswahl</h1>
+
+<div class="category" *ngFor="let category of feeds">
+  <h2>{{category.name}}</h2>
+  <p class="desc">{{category.description}}</p>
+
+  <div class="row">
+    <div class="col-sm-4" *ngFor="let feed of getFeedItems(category);">
+      <div class="card">
+        <div class="card-block">
+          <h4 class="card-title">
+            {{feed}}
+          </h4>
+          <a href="#" (click)="toggleSubscription(category,feed, $event)" [ngClass]="{'btn-primary': !isSubscribedToFeed(category,feed), 'btn-danger': isSubscribedToFeed(category,feed)}"
+            class="btn btn-primary">
+            <i class="ion" [ngClass]="{'ion-md-add': !isSubscribedToFeed(category,feed), 'ion-md-remove': isSubscribedToFeed(category,feed)}"></i>            {{!isSubscribedToFeed(category,feed) && 'Abonnieren' || 'Deabonnieren' }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="category">
+  <h2>Eigene Feeds</h2>
+  <p class="desc">Füge eigene Feeds hinzu:</p>
+  <div class="row">
+    <div class="col-sm-12">
+      <ul class="list-group">
+        <li class="list-group-item feed-item" *ngFor="let feedUrl of getCustomFeedItems()">
+          <span>{{feedUrl}}</span> <button class="btn btn-danger" (click)="removeCustomFeed(feedUrl)"><i class="pull-xs-right ion ion-md-trash"></i></button>
+        </li>
+        <li class="list-group-item feed-add-item">
+          <div class="alert alert-danger" role="alert" [hidden]="!validatingFeedError">
+            <strong>Oh Nein!</strong> Der Feed konnte nicht geladen werden. Bitte überprüfe die URL.
+          </div>
+          <div class="spinner" [hidden]="!validatingFeed">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+          </div>
+          <form class="form-inline">
+            <div class="form-group">
+              <label class="sr-only" for="feedUlr">Feed URL</label>
+              <input type="text" class="form-control" id="feedUlr" placeholder="Feed URL" [(ngModel)]="customFeedInputUrl" [ngModelOptions]="{standalone: true}">
+            </div>
+            <button type="submit" class="btn btn-primary" (click)="addCustomFeed()" [disabled]="validatingFeed"><i class="ion ion-md-add"></i> Hinzufügen</button>
+          </form>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

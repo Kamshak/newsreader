@@ -1,0 +1,12 @@
+<nav class="navbar navbar-light bg-faded">
+	<button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#navbar-header" aria-controls="navbar-header"></button>
+	<div class="collapse navbar-toggleable-xs" id="navbar-header">
+		<ng-content select="[navbar-pre-items]"></ng-content>
+		<ul class="nav navbar-nav">
+			<li class="nav-item" [uiSref]="item.stateName" uiSrefActive="active" *ngFor="let item of getNavigationItems()">
+				<a [uiSref]="item.stateName" class="nav-link">{{item.title}}</a>
+			</li>
+		</ul>
+		<ng-content select="[navbar-post-items]"></ng-content>
+	</div>
+</nav>

@@ -1,0 +1,13 @@
+@import "variables.scss";
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+@import "../../node_modules/ionicons/dist/scss/ionicons.scss";
+
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+h1 {
+  margin-top: calc(2rem - 20px);
+  margin-bottom: 2rem;
+}

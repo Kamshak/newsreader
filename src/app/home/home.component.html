@@ -1,0 +1,27 @@
+<div class="jumbotron" [hidden]="hasSelectedFeeds">
+	<h1>Feed Reader</h1>
+	<p>Auf dieser Seite erscheinen deine Feeds. Du hast noch keine Feeds abonniert, bitte wähle Feeds aus der Liste aus oder füge neue hinzu.</p>
+	<p>
+		<a class="btn btn-lg btn-primary" role="button" href="#/choose-feeds">Feeds Auswählen</a>
+	</p>
+</div>
+
+<h1 [hidden]="!hasSelectedFeeds">News</h1>
+<div class="spinner" [hidden]="!loading || !hasSelectedFeeds">
+  <div class="double-bounce1"></div>
+  <div class="double-bounce2"></div>
+</div>
+<div class="row" infinite-scroll [infiniteScrollDistance]="2"  [infiniteScrollThrottle]="500" (scrolled)="onScroll()">
+  <div class="col-xs-12 col-md-6 col-lg-4 fullheight" *ngFor="let article of displayArticles">
+      <div class="card">
+        <div class="card-block">
+          <h4 class="card-title">
+            {{article.title}}
+          </h4>
+          <span class="info">{{article.pubdate | amTimeAgo}}</span>
+          <p [innerHTML]="article.summary" ></p>
+          <a target="_blank" [href]="article.link" class="btn btn-secondary"><i class="ion ion-ios-open-outline"></i> Lesen</a>
+        </div>
+      </div>
+    </div>
+</div>
